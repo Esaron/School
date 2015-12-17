@@ -1,0 +1,21 @@
+<h1>Background and Motivations</h1>
+<body>
+    <p>
+        OpenGL makes it difficult to move between coordinate frames.  OpenGL inextricably ties the model matrix and the view matrix together, and to manipulate these matrices independent of one another, it is up to the developer to manage the matrix representations of the coordinate systems he or she is using at any given time.  This API lets the developer work exclusively in the world coordinate frame, while making it easy to manipulate model, view, or projection matrices directly for any class instance that uses one.  Class instances that exist within these different frames keep track of the matrices unique to them, and allow the developer to jump freely between manipulation of these different frames without the need to manage them at the lower-level OpenGL layer.  This makes it quick and easy to manipulate scores of different models, cameras, and scenes on the fly.
+    </p>
+    <p>
+        OpenGL forces users to implement their own methods of loading, manipulating, and passing values from meshes to the rendering engine.  Although not incredibly difficult, it can be time consuming and require a large amount of code.  This API allows users to define properties of models loaded into the program in a simple configuration file for an overall scene.  Each scene can be unique, and has default methods of rendering objects loaded to them so that what may have been 100 lines of code or more can be reduced to 2 plus a short configuration file for the end user.
+    </p>
+    <p>
+        OpenGL has no inherent concept of a camera.  All OpenGL knows is the location of vertices in the coordinate frame you represent them in, their associated properties, such as normal vectors and colors, the modelview matrix you choose to define and push onto the stack or set as the active matrix, and what you tell it to use for its projection mode.  If you want to use a "camera", you need to manipulate the modelview matrix such that the properties of this "camera" change.  This API allows users to define unique cameras that can be manipulated in 3D space, and keep track of their own view matrices and projection matrices.  They can be set to use orthographic or perspective projection modes and can have custom clipping behaviors.  Moreover, there can be as many cameras defined as the user likes for a given scene, all of which maintain their own states, and can be swapped for each other at will.
+    </p>
+    <p>
+        As mentioned before, the API allows for the creation of scenes from configuration files.  In these files, a user defines lights in the scene (which I was not able to complete), meshes in the scene, and properties regarding positions, transformations, and materials.  After a user writes these files, they can load a scene in their program with one method call and render all parts of it with another.  In addition to maintaining and allowing manipulation of any number of meshes, each scene can also contain any number of cameras, each of which maintain their own state.  This makes it simple to not only jump between different scenes for complex programs that require it, but also to snap between different views within the scene with a single method call.
+    </p>
+    <p>
+        The final two pieces that I implemented are part of an extensible layer for the loading of custom GLSL shaders that deal with illumination and shading, and texture mapping.  These features revolve around creating a ShaderHelper instance that manages the GLSL program, vertex shaders, and fragment shaders for each scene.  Uniform variables and attributes can be dynamically set based on what is required for those shaders as defined in a callback function of the ShaderHelper.  All of the meshes currently in the system have the required material properties for Phong illumination and shading.  The unfinished tasks include altering ShaderHelper to be a singleton class, and implementing a true capability to set callback functions for passing variables and attribute to the GLSL shaders the user defines and loads (currently, the implementation only allows for a single callback function, which may not work if users want to use multiple shaders).
+    </p>
+    <p>
+        <a href="site.html">Back to Main</a>
+    </p>
+</body>

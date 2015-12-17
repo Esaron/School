@@ -1,0 +1,68 @@
+<h1>Approaches</h1>
+<body>
+    <p>
+        Very little is required of a developer to make use of this framework.  They are responsible for creating configuration files for scenes that define the lights and meshes present in the scene, and properties thereof.  Each scene configuration file is defined as follows:
+    </p>
+    <p>
+        One line of the format "&lt;[number of lights]&gt; &lt;[number of meshes]&gt;"
+    </p>
+    <p>
+        A number of lines equal to the number of lights in line one of the format "L &lt;[light type: 0 for directional, 1 for point]&gt; &lt;[x coordinate position] [y coordinate position] [z coordinate position]&gt; &lt;[r channel value] [g channel value] [b channel value]&gt;"
+    </p>
+    <p>
+        A number of lines equal to the number of meshes in line one of the format "M &lt; [file name] &gt; &lt;[scale]&gt; &lt;[local x rotation] [local y rotation] [local z rotation]&gt; &lt;[x coordinate position] [y coordinate position] [z coordinate position]&gt; &lt;[ambient r channel value] [ambient g channel value] [ambient b channel value]&gt; &lt;[diffuse r channel value] [diffuse g channel value] [diffuse b channel value]&gt; &lt;[specular r channel value] [specular g channel value] [specular b channel value]&gt; &lt;ambient reflection coefficient&gt; &lt;diffuse reflection coefficient&gt; &lt;specular reflection coefficient&gt; &lt;specular exponent&gt; &lt;index of refraction&gt; &lt;reflective percentage&gt; &lt;refractive percentage&gt;"
+    </p>
+    <p>
+        Once a user of the API has defined their scenes, they are free to load and use them in their program.  In my own demos, I found it most useful to maintain a vector of scenes in my main class.  To add a scene to the program, you push a new Scene into the vector, load the file for that scene with the Load method, and add any Cameras you want in the scene.
+    </p>
+    <p>
+        To add Cameras to the scene, you simply call addCamera, passing as an argument one of the two constants PERSPECTIVE or ORTHOGRAPHIC depending on the mode you want to initialize the camera in.  The Camera is then added to a vector of Cameras within the scene, and can be manipulated as desired.  You can alter the clipping planes by setting the relative distances of the near and far plane, set the position, or change the local rotational properties of the Camera, among other manipulations.  When the camera setup of the scene is complete, you call setActiveCamera on the scene, passing as a parameter the index of the active Camera.  This is the Camera that will be used to render the Meshes in the scene if using the default rendering call of the API.
+    </p>
+    <p>
+        When finished configuring the scenes and cameras in the program, you can either use the APIs bundled GLConfig class to load your properties, or use the conventional gl method calls.  GLConfig is simply a wrapper that enables the user to condense the numerous common calls made to OpenGL when starting a program to a single line.  You then make the typical calls to define the callback functions for your display loop, reshape function, mouse function, motion function, and keyboard function, all of which are still defined by the user.  A possible improvement proposed is to allow specific function callbacks per scene, such that interactions with each scene can be handled independently.  The developer then switches to the main loop as usual.
+    </p>
+    <p>
+        Now that a collection of Scenes, each with their own Cameras, Meshes, and Lights is in memory, I found it useful to keep track of my active scene to enable easy switching between scenes, and quick referencing of the active scene's active camera's properties.  Each Mesh in the scene can be manipulated as needed, and keeps track of its model matrix, material properties, and polygon mode.  Mesh's have a Render method for individual rendering that takes a Camera as a parameter, so that users aren't constrained to the active Camera for the Scene if they wish to implement advanced functionality.  Users can manipulate Meshes individually, loop through the active Scene's Mesh vector, or simply call the active Scene's RenderAll method to automatically render the objects to the active Camera according to their individual properties.  A parameter for the OpenGL mode can also be passed in to render each object accordingly using lines, triangles, triangle fans, or any of the other OpenGL modes.
+    </p>
+    <p>
+        A major goal of the API was to allow users to easily integrate with GLSL shaders.  To accomplish this, a ShaderHelper class was implemented to track the GLSL program and shaders loaded into memory.  Once a user has enabled the GLSL support programmatically, they can load whatever vertex or fragment shaders they want at any time.  Via a callback function, users can set up the linkage between their shaders and the program and pass whatever variables or attributes they require to their shaders.  In Scene's RenderAll method, the variables the user needs are automatically set during the rendering loop.  This powerful feature allows users to use and switch between their shaders by making a method call to load them, and give them whatever information they need by defining and setting a callback function.
+    </p>
+    <p>
+        In addition to the classes already mentioned, the following classes exist within the API:
+    </p>
+    <p>
+        Color: Simple class allowing for the definition of red, green, blue, and alpha channel values.
+    </p>
+    <p>
+        Face: Used in the definition of object meshes.  Maps vertex indices and normal indices to lists in the Scene.
+    </p>
+    <p>
+        Light: Can be either a directional or point light based on the type value.  Has a location and color intensity.
+    </p>
+    <p>
+        Material: Used to track the material properties of models. Tracks the ambient, diffuse, and specular colors, reflection coefficients, specular exponent, index of refraction, and reflective and refractive percentages.
+    </p>
+    <p>
+        Ray: Used for calculating object intersections.  Has an origin and direction vector.
+    </p>
+    <p>
+        TGA: Adopted from template code from assignments for loading and manipulating images used in texture mapping.
+    </p>
+    <p>
+        Texture: Allows for the loading, tracking, and manipulating of images files as TGA images.
+    </p>
+    <p>
+        Triangle: Simple three vertex structure for calculating intersections.
+    </p>
+    <p>
+        Vertex: A homogeneous coordinate with an x, y, z, and w value.
+    <p>
+        Vector: A homogeneous vector with an i, j, and k value, with assumed w of 0.
+    </p>
+    <p>
+        Util: A static utility class with helper methods for interacting with the aforementioned objects, such as defninition of cross product, dot product, and subtraction subroutines for coordinates, error handling methods, string manipulation methods, matrix by point multiplication, matrix by matrix multiplication, triangle intersection routines, and object selection.
+    </p>
+    <p>
+        <a href="site.html">Back to Main</a>
+    </p>
+</body>

@@ -1,0 +1,36 @@
+﻿Build started 12/17/2013 4:18:18 AM.
+     1>Project "C:\Users\Esaron\Documents\2-Fall-2013\EECS_466\TerribleSchoolCode\EECS_466_Proj\as4_template\as4_template.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp mesh.cpp
+         mesh.cpp
+     1>c:\users\esaron\documents\2-fall-2013\eecs_466\terribleschoolcode\eecs_466_proj\as4_template\mesh.cpp(69): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>c:\users\esaron\documents\2-fall-2013\eecs_466\terribleschoolcode\eecs_466_proj\as4_template\mesh.cpp(82): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(237) : see declaration of 'fscanf'
+     1>c:\users\esaron\documents\2-fall-2013\eecs_466\terribleschoolcode\eecs_466_proj\as4_template\mesh.cpp(103): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(237) : see declaration of 'fscanf'
+         main.cpp
+     1>c:\users\esaron\documents\2-fall-2013\eecs_466\terribleschoolcode\eecs_466_proj\as4_template\main.cpp(69): warning C4101: 'length' : unreferenced local variable
+     1>c:\users\esaron\documents\2-fall-2013\eecs_466\terribleschoolcode\eecs_466_proj\as4_template\main.cpp(71): warning C4101: 'output' : unreferenced local variable
+     1>c:\users\esaron\documents\2-fall-2013\eecs_466\terribleschoolcode\eecs_466_proj\as4_template\main.cpp(70): warning C4101: 'input' : unreferenced local variable
+     1>c:\users\esaron\documents\2-fall-2013\eecs_466\terribleschoolcode\eecs_466_proj\as4_template\main.cpp(309): warning C4018: '<=' : signed/unsigned mismatch
+     1>c:\users\esaron\documents\2-fall-2013\eecs_466\terribleschoolcode\eecs_466_proj\as4_template\main.cpp(318): warning C4018: '>' : signed/unsigned mismatch
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Esaron\Documents\2-Fall-2013\EECS_466\TerribleSchoolCode\EECS_466_Proj\Debug\as4_template.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Esaron\Documents\2-Fall-2013\EECS_466\TerribleSchoolCode\EECS_466_Proj\Debug\as4_template.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Esaron\Documents\2-Fall-2013\EECS_466\TerribleSchoolCode\EECS_466_Proj\Debug\as4_template.lib" /MACHINE:X86 Debug\GLConfig.obj
+         Debug\glprocs.obj
+         Debug\main.obj
+         Debug\Camera.obj
+         Debug\mesh.obj
+         Debug\read_tga.obj
+         Debug\scene.obj
+         Debug\ShaderHelper.obj
+         Debug\Texture.obj
+         Debug\tga.obj
+         Debug\util.obj
+         as4_template.vcxproj -> C:\Users\Esaron\Documents\2-Fall-2013\EECS_466\TerribleSchoolCode\EECS_466_Proj\Debug\as4_template.exe
+     1>Done Building Project "C:\Users\Esaron\Documents\2-Fall-2013\EECS_466\TerribleSchoolCode\EECS_466_Proj\as4_template\as4_template.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.81
